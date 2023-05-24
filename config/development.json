@@ -1,0 +1,4 @@
+{
+    "token": "TOKEN_DEV",
+    "mongodb": "MONGODB_LOCALHOST"
+}
