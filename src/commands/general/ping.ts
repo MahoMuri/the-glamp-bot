@@ -1,6 +1,5 @@
 import {
     ColorResolvable,
-    Message,
     EmbedBuilder,
     ChatInputCommandInteraction,
     SlashCommandBuilder,
@@ -14,6 +13,7 @@ export const command: Command = {
     data: new SlashCommandBuilder()
         .setName("ping")
         .setDescription("Send a pong!"),
+    isAdmin: false,
     description: "The ping command",
     usage: "/ping",
     example: `
@@ -22,12 +22,13 @@ export const command: Command = {
     \`\`\`
     `,
     run: async (bot, interaction: ChatInputCommandInteraction<"cached">) => {
-        const msg = <Message>await interaction.editReply({
+        interaction.editReply({
             content: `🏓 Pinging....`,
         });
 
+        const reply = await interaction.fetchReply();
         const wsping = bot.ws.ping;
-        const apiping = msg.createdTimestamp - interaction.createdTimestamp;
+        const apiping = reply.createdTimestamp - interaction.createdTimestamp;
         let wsemoji: string;
         let apiemoji: string;
         let color: ColorResolvable;

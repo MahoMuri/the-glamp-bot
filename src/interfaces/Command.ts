@@ -20,6 +20,7 @@ export interface Command {
         | SlashCommandSubcommandsOnlyBuilder
         | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">;
     description: string;
+    isAdmin: boolean;
     usage: string;
     example: string;
     placeholders?: string;

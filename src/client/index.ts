@@ -6,6 +6,7 @@ import { getBorderCharacters, table } from "table";
 import { Command } from "../interfaces/Command";
 import { getEnvironmentConfiguration } from "../utils/EnvironmentConifg";
 import { Colors } from "../interfaces/Colors";
+import { Display } from "../utils/Display";
 
 export class Bot extends Client {
     public categories = readdirSync(path.join(__dirname, "..", "commands"));
@@ -17,6 +18,8 @@ export class Bot extends Client {
     public config = getEnvironmentConfiguration();
 
     public consola = consola;
+
+    public display: Display;
 
     static colors = Colors;
 
@@ -38,6 +41,7 @@ export class Bot extends Client {
         await this.login(this.config.token);
         this.consola.withTag(`@${this.user.username}｜`);
         this.consola.wrapConsole();
+        this.display = new Display(this);
 
         // Command registry
         const cmdTable = [];
