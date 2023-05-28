@@ -1,4 +1,8 @@
 {
     "token": "TOKEN_DEV",
-    "mongodb": "MONGODB_LOCALHOST"
+    "mongodb": "MONGODB_LOCALHOST",
+    "host": "LAVALINK_HOST",
+    "password": "LAVALINK_PASSWORD",
+    "spotify_clientId": "SPOTIFY_CLIENT_ID",
+    "spotify_clientSecret": "SPOTIFY_CLIENT_SECRET"
 }

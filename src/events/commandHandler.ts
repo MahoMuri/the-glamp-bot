@@ -18,7 +18,7 @@ export const event: Event = {
                     PermissionFlagsBits.Administrator
                 )
             ) {
-                bot.display.sendInvalidArgumentMessage(
+                bot.display.sendErrorMessage(
                     "❌ You can't run this command",
                     interaction,
                     true

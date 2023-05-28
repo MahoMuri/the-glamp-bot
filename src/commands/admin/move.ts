@@ -53,7 +53,7 @@ export const command: Command = {
         const { member } = interaction;
 
         if (!member?.voice.channel) {
-            bot.display.sendInvalidArgumentMessage(
+            bot.display.sendErrorMessage(
                 "❌ You must be in a voice channel to use this command.",
                 interaction
             );

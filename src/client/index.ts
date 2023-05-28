@@ -3,6 +3,9 @@ import { readdirSync } from "fs";
 import path from "path";
 import { consola } from "consola";
 import { getBorderCharacters, table } from "table";
+import { Kazagumo, Plugins } from "kazagumo";
+import Spotify from "kazagumo-spotify";
+import { Connectors, NodeOption } from "shoukaku";
 import { Command } from "../interfaces/Command";
 import { getEnvironmentConfiguration } from "../utils/EnvironmentConifg";
 import { Colors } from "../interfaces/Colors";
@@ -20,6 +23,8 @@ export class Bot extends Client {
     public consola = consola;
 
     public display: Display;
+
+    public kazagumo: Kazagumo;
 
     static colors = Colors;
 
@@ -42,6 +47,36 @@ export class Bot extends Client {
         this.consola.withTag(`@${this.user.username}｜`);
         this.consola.wrapConsole();
         this.display = new Display(this);
+
+        // Kazagumo client
+        const nodes: NodeOption[] = [
+            {
+                name: "Node 1",
+                url: this.config.host,
+                auth: this.config.password,
+                secure: true,
+            },
+        ];
+        this.kazagumo = new Kazagumo(
+            {
+                defaultSearchEngine: "youtube",
+                send: (guildId, payload) => {
+                    const guild = this.guilds.cache.get(guildId);
+                    if (guild) {
+                        guild.shard.send(payload);
+                    }
+                },
+                plugins: [
+                    new Plugins.PlayerMoved(this),
+                    new Spotify({
+                        clientId: this.config.spotify_clientId,
+                        clientSecret: this.config.spotify_clientSecret,
+                    }),
+                ],
+            },
+            new Connectors.DiscordJS(this),
+            nodes
+        );
 
         // Command registry
         const cmdTable = [];
