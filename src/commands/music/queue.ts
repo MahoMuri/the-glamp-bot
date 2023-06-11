@@ -24,48 +24,49 @@ export const command: Command = {
     run: async (bot, interaction: ChatInputCommandInteraction<"cached">) => {
         const player = bot.kazagumo.getPlayer(interaction.guildId);
 
-        if (!player) {
+        if (!player || !player.playing) {
             bot.display.sendErrorMessage(
-                "❌ There is no player for this guild.",
+                "❌ There is nothing playing!",
                 interaction
             );
             return;
         }
 
-        if (!player.queue.current || player.queue.isEmpty) {
-            bot.display.sendErrorMessage(
-                "❌ There is no music playing.",
-                interaction
-            );
+        if (player.queue.isEmpty) {
+            bot.display.sendErrorMessage("❌ The queue is empty!", interaction);
             return;
         }
 
         const { queue } = player;
 
         const songList = [];
+        // // Push the current song
+        // songList.push(
+        //     `__**Now Playing:**__\n[${queue.current.title}](${
+        //         queue.current.uri
+        //     }) | \`${prettyMilliseconds(queue.current.length, {
+        //         colonNotation: true,
+        //         secondsDecimalDigits: 0,
+        //     })}\` | \`Requested by: ${queue.current.author}\`\n\n`
+        // );
+
+        // Push the songs to the songList
         queue.forEach((item, iterator) => {
             let list: string;
             if (songList.length === 0) {
-                list = `__**Now Playing:**__\n${iterator + 1}. [${
-                    item.title
-                }](${item.uri}) | \`${prettyMilliseconds(item.length, {
-                    colonNotation: true,
-                    secondsDecimalDigits: 0,
-                })}\` | \`Requested by: ${item.author}\n\`\n`;
-            } else if (songList.length === 1) {
                 list = `__**Up next:**__\n${iterator + 1}. [${item.title}](${
                     item.uri
                 }) | \`${prettyMilliseconds(item.length, {
                     colonNotation: true,
                     secondsDecimalDigits: 0,
-                })}\` | \`Requested by: ${item.author}\n\``;
+                })}\` | \`Requested by: ${item.requester}\`\n`;
             } else {
                 list = `${iterator + 1}. [${item.title}](${
                     item.uri
                 }) | \`${prettyMilliseconds(item.length, {
                     colonNotation: true,
                     secondsDecimalDigits: 0,
-                })}\` | \`Requested by: ${item.author}\n\``;
+                })}\` | \`Requested by: ${item.requester}\`\n`;
             }
 
             songList.push(list);
@@ -123,6 +124,7 @@ export const command: Command = {
         await pagination({
             embeds,
             author: interaction.member.user,
+            interaction,
             time: ms("1m"),
             disableButtons: false,
             fastSkip: true,

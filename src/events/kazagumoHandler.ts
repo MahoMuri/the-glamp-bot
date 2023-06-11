@@ -39,7 +39,7 @@ export const event: Event = {
 
             channel
                 .send({
-                    content: `Now playing **${track.title}** by **${track.author}**`,
+                    content: `🎶Now playing **${track.title}** by **${track.author}**`,
                 })
                 .then((x) => player.data.set("message", x));
         });

@@ -29,6 +29,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@devraelfreeze/discordjs-pagination", "npm:2.7.4"],\
+            ["@sindresorhus/to-milliseconds", "npm:1.2.0"],\
             ["@types/common-tags", "npm:1.8.1"],\
             ["@types/eslint", "npm:8.37.0"],\
             ["@types/lodash", "npm:4.14.195"],\
@@ -58,7 +59,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-notifier", "npm:10.0.1"],\
             ["pinst", "npm:3.0.0"],\
             ["prettier", "npm:2.8.8"],\
-            ["pretty-ms", "npm:8.0.0"],\
+            ["pretty-ms", "npm:7.0.1"],\
             ["shoukaku", "npm:3.4.0"],\
             ["table", "npm:6.8.1"],\
             ["ts-node", "virtual:14b251c4e35d29a6fae029c2c8db4d8ca30173f62290273b93fb76a548f3c074af34d34555a46ad354b906db3e9a2cf6378f0121250f5ec5f67bc158401ce77f#npm:10.9.1"],\
@@ -388,6 +389,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@sapphire-snowflake-npm-3.5.1-cebf00e703-8fc025020a.zip/node_modules/@sapphire/snowflake/",\
           "packageDependencies": [\
             ["@sapphire/snowflake", "npm:3.5.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@sindresorhus/to-milliseconds", [\
+        ["npm:1.2.0", {\
+          "packageLocation": "./.yarn/cache/@sindresorhus-to-milliseconds-npm-1.2.0-a69d7f5634-3b14f889bd.zip/node_modules/@sindresorhus/to-milliseconds/",\
+          "packageDependencies": [\
+            ["@sindresorhus/to-milliseconds", "npm:1.2.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3633,10 +3643,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["parse-ms", [\
-        ["npm:3.0.0", {\
-          "packageLocation": "./.yarn/cache/parse-ms-npm-3.0.0-3acf02c3f3-fc602bba09.zip/node_modules/parse-ms/",\
+        ["npm:2.1.0", {\
+          "packageLocation": "./.yarn/cache/parse-ms-npm-2.1.0-de852c39bb-d5c66c76cc.zip/node_modules/parse-ms/",\
           "packageDependencies": [\
-            ["parse-ms", "npm:3.0.0"]\
+            ["parse-ms", "npm:2.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3758,11 +3768,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["pretty-ms", [\
-        ["npm:8.0.0", {\
-          "packageLocation": "./.yarn/cache/pretty-ms-npm-8.0.0-7a40e0b54a-b7d2a81828.zip/node_modules/pretty-ms/",\
+        ["npm:7.0.1", {\
+          "packageLocation": "./.yarn/cache/pretty-ms-npm-7.0.1-d748cac064-d76c492028.zip/node_modules/pretty-ms/",\
           "packageDependencies": [\
-            ["pretty-ms", "npm:8.0.0"],\
-            ["parse-ms", "npm:3.0.0"]\
+            ["pretty-ms", "npm:7.0.1"],\
+            ["parse-ms", "npm:2.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4398,6 +4408,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["the-glamp-bot", "workspace:."],\
             ["@devraelfreeze/discordjs-pagination", "npm:2.7.4"],\
+            ["@sindresorhus/to-milliseconds", "npm:1.2.0"],\
             ["@types/common-tags", "npm:1.8.1"],\
             ["@types/eslint", "npm:8.37.0"],\
             ["@types/lodash", "npm:4.14.195"],\
@@ -4427,7 +4438,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-notifier", "npm:10.0.1"],\
             ["pinst", "npm:3.0.0"],\
             ["prettier", "npm:2.8.8"],\
-            ["pretty-ms", "npm:8.0.0"],\
+            ["pretty-ms", "npm:7.0.1"],\
             ["shoukaku", "npm:3.4.0"],\
             ["table", "npm:6.8.1"],\
             ["ts-node", "virtual:14b251c4e35d29a6fae029c2c8db4d8ca30173f62290273b93fb76a548f3c074af34d34555a46ad354b906db3e9a2cf6378f0121250f5ec5f67bc158401ce77f#npm:10.9.1"],\

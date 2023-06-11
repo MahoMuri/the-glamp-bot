@@ -11,6 +11,17 @@ export const command: Command = {
                 .setName("song")
                 .setDescription("The song to play.")
                 .setRequired(true)
+        )
+        .addStringOption((option) =>
+            option
+                .setName("engine")
+                .setDescription(
+                    "Tells the bot what search engine to use. Defaults to Youtube."
+                )
+                .addChoices(
+                    { name: "YouTube", value: "youtube" },
+                    { name: "Spotify", value: "spotify" }
+                )
         ),
     isAdmin: false,
     description: "Plays a song.",
@@ -30,9 +41,11 @@ export const command: Command = {
         }
 
         const song = interaction.options.getString("song", true);
+        const engine = interaction.options.getString("engine") || "youtube";
 
         const result = await player.search(song, {
             requester: interaction.user,
+            engine,
         });
 
         if (!result.tracks.length) {
